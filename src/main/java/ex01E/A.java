@@ -7,7 +7,7 @@ import ex01C.Log4jBasics;
 
 class A {
 	int x = 0;
-	protected static Logger log = Logger.getLogger(Log4jBasics.class);
+	protected static Logger log = Logger.getLogger(A.class);
 	static final String path = "src/resources/log4j.properties";
 
 	void m() {

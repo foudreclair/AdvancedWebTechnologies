@@ -11,11 +11,10 @@ public class C {
 		s.append("d");
 	}
 
-	protected static Logger log = Logger.getLogger(Log4jBasics.class);
+	protected static Logger log = Logger.getLogger(C.class);
 	static final String path = "src/resources/log4j.properties";
 
 	public static void main(String[] args) {
-
 		PropertyConfigurator.configure(path);
 		int i = 0;
 		StringBuffer s = new StringBuffer("abc");
