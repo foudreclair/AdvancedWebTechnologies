@@ -2,9 +2,6 @@ package ex01E;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-
-import ex01C.Log4jBasics;
-
 class A {
 	int x = 0;
 	protected static Logger log = Logger.getLogger(A.class);
@@ -14,6 +11,9 @@ class A {
 		PropertyConfigurator.configure(path);
 		log.info("Je suis dans la méthode m d'une instance de A");
 	}
+	
+
+
 }
 
 class B extends A {
@@ -43,4 +43,5 @@ class C extends B {
 		((B) this).m();
 		// (1)
 	}
+
 }
