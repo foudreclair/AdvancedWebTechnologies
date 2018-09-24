@@ -1,6 +1,9 @@
 package ex02;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -15,9 +18,21 @@ public class listFile {
 	public static void main(String[] args) {
 		PropertyConfigurator.configure(path);
 		try (ZipFile zipFile = new ZipFile(pathZip)) {
-			zipFile.stream().map(ZipEntry::getName).forEach(System.out::println);
+			zipFile.stream().forEach(ze -> print(ze));
 		} catch (IOException e) {
 			log.error("Canno't find the Zip File : " + e);
 		}
+	}
+
+	private static void print(ZipEntry zipEntry) {
+		System.out.println("File name : " + zipEntry.getName() + " Time : " + TimeConverter(zipEntry.getTime())
+				+ " size : " + zipEntry.getSize() + " Packed Size : " + zipEntry.getCompressedSize());
+	}
+
+	public static String TimeConverter(long dateIn) {
+		Date date = new Date(dateIn);
+		DateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		String formatted = format.format(date);
+		return formatted;
 	}
 }
