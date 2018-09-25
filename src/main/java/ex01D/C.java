@@ -3,8 +3,6 @@ package ex01D;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import ex01C.Log4jBasics;
-
 public class C {
 	static void method1(int i, StringBuffer s) {
 		i++;
@@ -12,7 +10,7 @@ public class C {
 	}
 
 	protected static Logger log = Logger.getLogger(C.class);
-	static final String path = "src/resources/log4j.properties";
+	public static final String path = "src/resources/log4j.properties";
 
 	public static void main(String[] args) {
 		PropertyConfigurator.configure(path);
