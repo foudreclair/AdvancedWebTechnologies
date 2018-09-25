@@ -1,5 +1,7 @@
 package ex02b;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -34,7 +36,7 @@ public class CopyFile {
 
 		System.out.println("CHECK OK GO TO COPY FILE !");
 		try {
-			goToCopy(fSource, fDestination);
+			goToCopy(pathSource, pathDestination);
 		} catch (IOException e) {
 			System.out.println("Error to copy file, please check file");
 			e.printStackTrace();
@@ -43,21 +45,17 @@ public class CopyFile {
 
 	}
 
-	private static void goToCopy(File source, File dest) throws IOException {
-		InputStream in = null;
-		OutputStream out = null;
-		try {
-			in = new FileInputStream(source);
-			out = new FileOutputStream(dest);
-			byte[] buffer = new byte[1024];
-			int length;
-			while ((length = in.read(buffer)) > 0) {
-				out.write(buffer, 0, length);
-			}
-		} finally {
-			in.close();
-			out.close();
-		}
+	private static void goToCopy(String source, String dest) throws IOException {
+		BufferedInputStream fin = new BufferedInputStream(new FileInputStream(source));
+		BufferedOutputStream fout = new BufferedOutputStream(new FileOutputStream(dest));
+		int i;
+		do {
+			i = fin.read();
+			if (i != -1)
+				fout.write(i);
+		} while (i != -1);
+		fin.close();
+		fout.close();
 	}
 
 }
