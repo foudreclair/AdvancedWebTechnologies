@@ -10,7 +10,6 @@ public class CountWord {
 
 	public static void main(String[] args) throws IOException {
 		String pathFile = "/home/foudre/workspace/test/test.txt";
-
 		System.out.println("Number of words : " + countWords(pathFile));
 	}
 
