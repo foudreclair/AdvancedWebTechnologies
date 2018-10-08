@@ -11,13 +11,12 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 public class ListFile {
-	private static String pathZip = "/mnt/monster/home/eleves/p/pgoffic/eclipse-workspace/hello/src/main/java/ex02/target.zip";
 	protected static Logger log = Logger.getLogger(ListFile.class);
 	public static final String path = "src/resources/log4j.properties";
 
 	public static void main(String[] args) {
 		PropertyConfigurator.configure(path);
-		try (ZipFile zipFile = new ZipFile(pathZip)) {
+		try (ZipFile zipFile = new ZipFile("target.zip")) {
 			zipFile.stream().forEach(ze -> print(ze));
 		} catch (IOException e) {
 			log.error("Canno't find the Zip File : " + e);

@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 public class CountWord {
 
 	public static void main(String[] args) throws IOException {
-		String pathFile = "/home/foudre/workspace/test/test.txt";
+		String pathFile = "test.txt";
 		System.out.println("Number of words : " + countWords(pathFile));
 	}
 
