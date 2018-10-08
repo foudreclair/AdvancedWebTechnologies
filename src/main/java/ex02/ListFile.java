@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -17,10 +18,16 @@ public class ListFile {
 	public static void main(String[] args) {
 		PropertyConfigurator.configure(path);
 		try (ZipFile zipFile = new ZipFile("target.zip")) {
-			zipFile.stream().forEach(ze -> print(ze));
+			// WITH STREAM zipFile.stream().forEach(ze -> print(ze));
+			Enumeration<? extends ZipEntry> zipEntries = zipFile.entries();
+			while (zipEntries.hasMoreElements()) {
+				print(zipEntries.nextElement());
+			}
 		} catch (IOException e) {
 			log.error("Canno't find the Zip File : " + e);
 		}
+	
+		
 	}
 
 	private static void print(ZipEntry zipEntry) {
